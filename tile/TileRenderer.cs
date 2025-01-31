@@ -3,17 +3,17 @@ using Terraria.chunk;
 
 namespace Terraria.tile
 {
-    public partial class TileRenderer : Node
+    public partial class TileRenderer(ChunkController chunkController) : Node
     {
+        private readonly ChunkController _chunkController = chunkController;
         private TileMapLayer _terrainLayer;
 
         public override void _Ready()
         {
             _terrainLayer = GetNode<TileMapLayer>("../TerrainLayer");
 
-            var controller = GetNode<ChunkController>("../ChunkController");
-            controller.ChunkLoaded += OnChunkLoaded;
-            controller.ChunkUnloaded += OnChunkUnloaded;
+            _chunkController.ChunkLoaded += OnChunkLoaded;
+            _chunkController.ChunkUnloaded += OnChunkUnloaded;
         }
 
         private void OnChunkLoaded(Chunk chunk)

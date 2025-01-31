@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Terraria.generation;
 
 namespace Terraria.chunk
 {
-    public partial class ChunkController : Node
+    public partial class ChunkController(IWorldGenerator worldGenerator) : Node
     {
+        private readonly IWorldGenerator _worldGenerator = worldGenerator;
         private readonly Dictionary<Vector2I, Chunk> _activeChunks = [];
 
         private Vector2I _renderDistance = new(10, 5);
@@ -95,6 +97,8 @@ namespace Terraria.chunk
             Chunk chunk = new(chunkPosition);
 
             _activeChunks.Add(chunkPosition, chunk);
+
+            _worldGenerator.Generate(chunk);
 
             ChunkLoaded?.Invoke(chunk);
         }

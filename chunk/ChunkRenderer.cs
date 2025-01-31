@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using Godot;
 using Terraria.chunk;
 
-public partial class ChunkRenderer : Node2D
+public partial class ChunkRenderer(ChunkController controller) : Node2D
 {
+    private readonly ChunkController _controller = controller;
     private readonly IList<Chunk> _chunkCache = [];
 
     public override void _Ready()
     {
-        var controller = GetNode<ChunkController>("../ChunkController");
-        controller.ChunkLoaded += OnChunkLoaded;
-        controller.ChunkUnloaded += OnChunkUnloaded;
+        _controller.ChunkLoaded += OnChunkLoaded;
+        _controller.ChunkUnloaded += OnChunkUnloaded;
     }
 
     private void OnChunkLoaded(Chunk chunk)
