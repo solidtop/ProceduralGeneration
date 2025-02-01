@@ -14,6 +14,15 @@ public partial class Camera : Camera2D
 
     public override void _Process(double delta)
     {
+        if (Input.IsActionPressed("camera_zoom_in") && Zoom < _maxZoom)
+        {
+            Zoom += _zoomSpeed * (float)delta;
+        }
+        else if (Input.IsActionPressed("camera_zoom_out") && Zoom > _minZoom)
+        {
+            Zoom -= _zoomSpeed * (float)delta;
+        }
+
         Vector2 movement = Vector2.Zero;
 
         if (Input.IsActionPressed("camera_left"))
@@ -28,15 +37,6 @@ public partial class Camera : Camera2D
         if (movement != Vector2.Zero)
         {
             Position += movement.Normalized() * _speed * (float)delta;
-        }
-
-        if (Input.IsActionPressed("camera_zoom_in") && Zoom < _maxZoom)
-        {
-            Zoom += _zoomSpeed * (float)delta;
-        }
-        else if (Input.IsActionPressed("camera_zoom_out") && Zoom > _minZoom)
-        {
-            Zoom -= _zoomSpeed * (float)delta;
         }
     }
 }
