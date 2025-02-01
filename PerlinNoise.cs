@@ -3,36 +3,33 @@ using Godot;
 
 namespace Terraria
 {
-    public class PerlinNoise(int octaves, float frequency, float amplitude)
+    public class PerlinNoise
     {
         private const float AmplitudeScale = 1f;
         private const float FrequencyScale = 0.01f;
 
-        private readonly int _octaves = octaves;
-        private readonly float _amplitude = amplitude * AmplitudeScale;
-        private readonly float _frequency = frequency * FrequencyScale;
+        private readonly int _octaves;
+        private readonly float _amplitude;
+        private readonly float _frequency;
+        private readonly int[] _permutation;
 
-        private static readonly int[] gradients1D = [-1, 1];
+        private static readonly int[] _gradients1D = [-1, 1];
 
-        private static readonly int[][] gradients2D = [
+        private static readonly int[][] _gradients2D = [
             [1, 1], [-1, 1], [1, -1], [-1, -1], // Diagonal directions
             [1, 0], [-1, 0], [0, 1], [0, -1] // Cardinal directions
         ];
 
-        private static int seed = 0;
-        private static int[] permutation = GeneratePermutation();
-
-        public PerlinNoise(int octaves, float frequency) : this(octaves, frequency, 1) { }
-
-        public static int Seed
+        public PerlinNoise(int seed, int octaves, float frequency, float amplitude)
         {
-            get => seed;
-            set
-            {
-                seed = value;
-                permutation = GeneratePermutation();
-            }
+            _octaves = octaves;
+            _amplitude = amplitude * AmplitudeScale;
+            _frequency = frequency * FrequencyScale;
+
+            _permutation = GeneratePermutation(seed);
         }
+
+        public PerlinNoise(int seed, int octaves, float frequency) : this(seed, octaves, frequency, 1) { }
 
         public float Sample1D(float x)
         {
@@ -70,7 +67,7 @@ namespace Terraria
             return value;
         }
 
-        public static float Noise(float x)
+        private float Noise(float x)
         {
             var x0 = (int)MathF.Floor(x);
             var x1 = x0 + 1;
@@ -79,8 +76,8 @@ namespace Terraria
             var sx = x - x0;
 
             // Hash values for gradient selection
-            var g0 = gradients1D[Hash(x0)];
-            var g1 = gradients1D[Hash(x1)];
+            var g0 = _gradients1D[Hash(x0)];
+            var g1 = _gradients1D[Hash(x1)];
 
             // Compute dot products
             var n0 = g0 * sx;
@@ -91,7 +88,7 @@ namespace Terraria
             return Utils.Lerp(n0, n1, u);
         }
 
-        public static float Noise(float x, float y)
+        private float Noise(float x, float y)
         {
             var x0 = (int)Mathf.Floor(x);
             var y0 = (int)Mathf.Floor(y);
@@ -102,10 +99,10 @@ namespace Terraria
             var sx = x - x0;
             var sy = y - y0;
 
-            var g00 = gradients2D[Hash(x0, y0)];
-            var g10 = gradients2D[Hash(x1, y0)];
-            var g01 = gradients2D[Hash(x0, y1)];
-            var g11 = gradients2D[Hash(x1, y1)];
+            var g00 = _gradients2D[Hash(x0, y0)];
+            var g10 = _gradients2D[Hash(x1, y0)];
+            var g01 = _gradients2D[Hash(x0, y1)];
+            var g11 = _gradients2D[Hash(x1, y1)];
 
             // Compute dot products
             var n00 = Dot(g00[0], g00[1], sx, sy);
@@ -124,14 +121,14 @@ namespace Terraria
             return Utils.Lerp(nx0, nx1, v);
         }
 
-        private static int Hash(int x)
+        private int Hash(int x)
         {
-            return permutation[x & 255] % 2;
+            return _permutation[x & 255] % 2;
         }
 
-        private static int Hash(int x, int y)
+        private int Hash(int x, int y)
         {
-            return permutation[permutation[x & 255] + y & 255] % 8;
+            return _permutation[(_permutation[x & 255] + y) & 255] % 8;
         }
 
         private static float Dot(float x1, float y1, float x2, float y2)
@@ -144,10 +141,10 @@ namespace Terraria
             return t * t * t * (t * (t * 6 - 15) + 10);
         }
 
-        private static int[] GeneratePermutation()
+        private static int[] GeneratePermutation(int seed)
         {
             var random = new Random(seed);
-            int[] perm = new int[256];
+            var perm = new int[256];
 
             for (int i = 0; i < 256; i++)
             {
