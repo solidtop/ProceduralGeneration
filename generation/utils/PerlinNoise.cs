@@ -1,7 +1,8 @@
 ﻿using System;
 using Godot;
+using Terraria;
 
-namespace Terraria
+namespace ProceduralGeneration.generation.utils
 {
     public class PerlinNoise
     {
@@ -128,7 +129,7 @@ namespace Terraria
 
         private int Hash(int x, int y)
         {
-            return _permutation[(_permutation[x & 255] + y) & 255] % 8;
+            return _permutation[_permutation[x & 255] + y & 255] % 8;
         }
 
         private static float Dot(float x1, float y1, float x2, float y2)

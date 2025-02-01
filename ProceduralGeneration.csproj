@@ -5,4 +5,10 @@
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="config\terrainsettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="generation\utils\" />
+  </ItemGroup>
 </Project>

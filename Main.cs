@@ -1,4 +1,5 @@
 using Godot;
+using ProceduralGeneration.generation.terrain;
 using Terraria.chunk;
 using Terraria.generation;
 using Terraria.generation.terrain;
@@ -8,12 +9,16 @@ public partial class Main : Node
 {
 	public override void _Ready()
 	{
-        WorldGeneratorContext context = new(seed: 12345);
+        int seed = 12345;
+
+        var terrainSettings = TerrainSettings.Load("config/terrainsettings.json");
+
+        WorldGeneratorContext context = new(seed, terrainSettings);
 
         WorldGenerator worldGenerator = new(
         [
             new TerrainGenerator(),
-		], context);
+        ], context);
 
         var chunkController = new ChunkController(worldGenerator);
         var chunkRenderer = new ChunkRenderer(chunkController);
