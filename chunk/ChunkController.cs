@@ -6,12 +6,12 @@ using Terraria.generation;
 
 namespace Terraria.chunk
 {
-    public partial class ChunkController(IWorldGenerator worldGenerator) : Node
+    public partial class ChunkController(WorldGenerator worldGenerator) : Node
     {
-        private readonly IWorldGenerator _worldGenerator = worldGenerator;
+        private readonly WorldGenerator _worldGenerator = worldGenerator;
         private readonly Dictionary<Vector2I, Chunk> _activeChunks = [];
 
-        private Vector2I _renderDistance = new(10, 5);
+        private Vector2I _renderDistance = new(5, 5);
         private int _loadDistance;
         private int _unloadDistance;
         private const int UnloadBufferDistance = 2;
@@ -110,7 +110,7 @@ namespace Terraria.chunk
             ChunkUnloaded?.Invoke(chunk);
         }
 
-        private static bool IsChunkWithinBounds(Vector2 chunkPosition)
+        private static bool IsChunkWithinBounds(Vector2I chunkPosition)
         {
             var maxChunksX = World.Width / Chunk.Size.X;
             var maxChunksY = World.Height / Chunk.Size.Y;

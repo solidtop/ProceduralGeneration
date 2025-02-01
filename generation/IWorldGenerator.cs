@@ -4,6 +4,6 @@ namespace Terraria.generation
 {
     public interface IWorldGenerator
     {
-        void Generate(Chunk chunk);
+        void Generate(Chunk chunk, WorldGeneratorContext context);
     }
 }

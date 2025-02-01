@@ -3,7 +3,7 @@ using Terraria.tile;
 
 namespace Terraria.chunk
 {
-    public partial class Chunk(Vector2I position)
+    public sealed class Chunk(Vector2I position)
     {
         public static readonly Vector2I Size = new(16, 16);
         public static readonly Vector2I PixelSize = new(256, 256);
