@@ -1,4 +1,4 @@
-﻿namespace Terraria
+﻿namespace ProceduralGeneration
 {
     public static class Utils
     {

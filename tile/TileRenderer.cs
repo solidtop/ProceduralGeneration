@@ -1,7 +1,7 @@
 ﻿using Godot;
-using Terraria.chunk;
+using ProceduralGeneration.chunk;
 
-namespace Terraria.tile
+namespace ProceduralGeneration.tile
 {
     public partial class TileRenderer(ChunkController chunkController) : Node
     {

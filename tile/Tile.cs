@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Godot;
 
-namespace Terraria.tile
+namespace ProceduralGeneration.tile
 {
     public readonly struct TileMetadata(Vector2I atlasCoords)
     {

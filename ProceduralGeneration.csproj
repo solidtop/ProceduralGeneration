@@ -7,8 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="config\terrainsettings.json" />
+    <Content Include="config\worldsettings.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="generation\utils\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

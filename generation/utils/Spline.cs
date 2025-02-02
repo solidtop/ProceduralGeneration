@@ -1,5 +1,5 @@
 ﻿using System;
-using Terraria;
+using System.Numerics;
 
 namespace ProceduralGeneration.generation.utils
 {
@@ -8,7 +8,7 @@ namespace ProceduralGeneration.generation.utils
         private readonly float[] _x;
         private readonly float[] _y;
 
-        public Spline(SplinePoint[] points)
+        public Spline(Vector2[] points)
         {
             if (points == null || points.Length < 2)
                 throw new ArgumentException("Spline requires at least two data points.", nameof(points));

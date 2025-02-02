@@ -1,9 +1,9 @@
 using Godot;
+using ProceduralGeneration;
+using ProceduralGeneration.chunk;
+using ProceduralGeneration.generation;
 using ProceduralGeneration.generation.terrain;
-using Terraria.chunk;
-using Terraria.generation;
-using Terraria.generation.terrain;
-using Terraria.tile;
+using ProceduralGeneration.tile;
 
 public partial class Main : Node
 {
@@ -11,16 +11,17 @@ public partial class Main : Node
 	{
         int seed = 12345;
 
+        var worldSettings = WorldSettings.Create(WorldSizeOption.Small);
         var terrainSettings = TerrainSettings.Load("config/terrainsettings.json");
 
-        WorldGeneratorContext context = new(seed, terrainSettings);
+        WorldGeneratorContext context = new(seed, worldSettings, terrainSettings);
 
         WorldGenerator worldGenerator = new(
         [
             new TerrainGenerator(),
         ], context);
 
-        var chunkController = new ChunkController(worldGenerator);
+        var chunkController = new ChunkController(worldSettings, worldGenerator);
         var chunkRenderer = new ChunkRenderer(chunkController);
         var tileRenderer = new TileRenderer(chunkController);
 

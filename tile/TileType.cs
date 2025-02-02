@@ -1,4 +1,4 @@
-﻿namespace Terraria.tile
+﻿namespace ProceduralGeneration.tile
 {
     public enum TileType
     {

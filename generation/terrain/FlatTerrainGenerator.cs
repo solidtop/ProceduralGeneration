@@ -4,7 +4,7 @@ using ProceduralGeneration.tile;
 
 namespace ProceduralGeneration.generation.terrain
 {
-    public class TerrainGenerator : IWorldGenerator
+    public class FlatTerrainGenerator : IWorldGenerator
     {
         public void Generate(Chunk chunk, WorldGeneratorContext context)
         {
@@ -14,16 +14,11 @@ namespace ProceduralGeneration.generation.terrain
 
             for (int x = 0; x < Chunk.Size.X; x++)
             {
-                var worldX = tileWorldPos.X + x;
-
-                var noiseValue = context.HeightNoise.Sample1D(worldX);
-                var height = context.HeightSpline.Interpolate(noiseValue);
-
                 for (int y = 0; y < Chunk.Size.Y; y++)
                 {
                     var worldY = tileWorldPos.Y + y;
 
-                    if (worldY > height)
+                    if (worldY > 100)
                     {
                         chunk.Tiles[x, y] = TileType.Stone;
                     }

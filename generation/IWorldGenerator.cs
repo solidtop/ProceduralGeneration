@@ -1,6 +1,6 @@
-﻿using Terraria.chunk;
+﻿using ProceduralGeneration.chunk;
 
-namespace Terraria.generation
+namespace ProceduralGeneration.generation
 {
     public interface IWorldGenerator
     {

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Terraria.generation;
+using ProceduralGeneration.generation;
 
-namespace Terraria.chunk
+namespace ProceduralGeneration.chunk
 {
-    public partial class ChunkController(WorldGenerator worldGenerator) : Node
+    public partial class ChunkController(WorldSettings world, WorldGenerator worldGenerator) : Node
     {
+        private readonly WorldSettings _world = world;
         private readonly WorldGenerator _worldGenerator = worldGenerator;
         private readonly Dictionary<Vector2I, Chunk> _activeChunks = [];
 
-        private Vector2I _renderDistance = new(5, 5);
+        private Vector2I _renderDistance = new(4, 3);
         private int _loadDistance;
         private int _unloadDistance;
         private const int UnloadBufferDistance = 2;
@@ -110,13 +111,12 @@ namespace Terraria.chunk
             ChunkUnloaded?.Invoke(chunk);
         }
 
-        private static bool IsChunkWithinBounds(Vector2I chunkPosition)
+        private bool IsChunkWithinBounds(Vector2I chunkPosition)
         {
-            var maxChunksX = World.Width / Chunk.Size.X;
-            var maxChunksY = World.Height / Chunk.Size.Y;
+            var maxChunks = _world.Size / Chunk.Size;
 
-            return chunkPosition.X >= 0 && chunkPosition.X < maxChunksX &&
-                   chunkPosition.Y >= 0 && chunkPosition.Y < maxChunksY;
+            return chunkPosition.X >= 0 && chunkPosition.X < maxChunks.X &&
+                   chunkPosition.Y >= 0 && chunkPosition.Y < maxChunks.Y;
         }
     }
 }

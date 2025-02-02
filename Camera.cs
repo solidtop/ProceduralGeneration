@@ -10,6 +10,7 @@ public partial class Camera : Camera2D
     public override void _Ready()
     {
         Zoom = _minZoom;
+        Position = new(500, 1200);
     }
 
     public override void _Process(double delta)

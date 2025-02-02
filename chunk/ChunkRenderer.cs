@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Godot;
-using Terraria.chunk;
+using ProceduralGeneration.chunk;
 
 public partial class ChunkRenderer(ChunkController controller) : Node2D
 {

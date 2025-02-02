@@ -1,25 +1,19 @@
 ﻿using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using ProceduralGeneration.generation.utils;
+using System.Numerics;
+using Newtonsoft.Json;
 
 namespace ProceduralGeneration.generation.terrain
 {
     public class TerrainSettings
     {
-        [JsonPropertyName("octaves")]
         public int Octaves { get; set; }
-        
-        [JsonPropertyName("frequency")]
         public float Frequency { get; set; }
-
-        [JsonPropertyName("heightPoints")]
-        public SplinePoint[] HeightPoints { get; set; }
+        public Vector2[] HeightPoints { get; set; }
 
         public static TerrainSettings Load(string filePath)
         {
             var json = File.ReadAllText(filePath);
-            return JsonSerializer.Deserialize<TerrainSettings>(json);
+            return JsonConvert.DeserializeObject<TerrainSettings>(json);
         }
     }
 }

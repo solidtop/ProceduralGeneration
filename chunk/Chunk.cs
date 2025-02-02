@@ -1,7 +1,7 @@
 ﻿using Godot;
-using Terraria.tile;
+using ProceduralGeneration.tile;
 
-namespace Terraria.chunk
+namespace ProceduralGeneration.chunk
 {
     public sealed class Chunk(Vector2I position)
     {
