@@ -10,7 +10,7 @@ namespace ProceduralGeneration.tile
 
         public override void _Ready()
         {
-            _terrainLayer = GetNode<TileMapLayer>("../TerrainLayer");
+            _terrainLayer = GetNode<TileMapLayer>("../Terrain");
 
             _chunkController.ChunkLoaded += OnChunkLoaded;
             _chunkController.ChunkUnloaded += OnChunkUnloaded;

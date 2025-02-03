@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace ProceduralGeneration.generation.utils
+namespace ProceduralGeneration.worldgen.utils
 {
     public class Spline
     {
@@ -25,6 +25,11 @@ namespace ProceduralGeneration.generation.utils
 
         public float Interpolate(float x)
         {
+            if (x <= _x[0])
+                return _y[0];
+            if (x >= _x[^1])
+                return _y[_x.Length - 1];
+
             var i = FindInterval(x);
             var t = (x - _x[i]) / (_x[i + 1] - _x[i]);
             return Utils.Lerp(_y[i], _y[i + 1], t);

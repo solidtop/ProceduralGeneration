@@ -6,8 +6,9 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="config\terrainsettings.json" />
-    <Content Include="config\worldsettings.json" />
+    <Content Include="data\world\small\worldgen\dirt.json" />
+    <Content Include="data\world\small\worldgen\world.json" />
+    <Content Include="data\world\small\worldgen\terrain.json" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

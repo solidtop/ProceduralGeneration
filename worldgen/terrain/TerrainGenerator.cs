@@ -2,22 +2,27 @@
 using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 
-namespace ProceduralGeneration.generation.terrain
+namespace ProceduralGeneration.worldgen.terrain
 {
     public class TerrainGenerator : IWorldGenerator
     {
-        public void Generate(Chunk chunk, WorldGeneratorContext context)
+        public void Generate(Chunk chunk, WorldGenContext context)
         {
             var tileWorldPos = new Vector2(
                (chunk.Position.X * Chunk.PixelSize.X) / Tile.Size,
                (chunk.Position.Y * Chunk.PixelSize.Y) / Tile.Size);
 
+            var defaultTile = context.Config.Terrain.DefaultTile;
+            var defaultFluid = context.Config.Terrain.DefaultFluid;
+
             for (int x = 0; x < Chunk.Size.X; x++)
             {
                 var worldX = tileWorldPos.X + x;
 
-                var noiseValue = context.HeightNoise.Sample1D(worldX);
-                var height = context.HeightSpline.Interpolate(noiseValue);
+                var noiseValue = context.Noises.Height.Sample1D(worldX);
+                var height = (int)context.Splines.Height.Interpolate(noiseValue);
+                
+                context.HeightMap[x] = height;
 
                 for (int y = 0; y < Chunk.Size.Y; y++)
                 {
@@ -25,7 +30,11 @@ namespace ProceduralGeneration.generation.terrain
 
                     if (worldY > height)
                     {
-                        chunk.Tiles[x, y] = TileType.Stone;
+                        chunk.Tiles[x, y] = defaultTile;
+                    }
+                    else if (worldY >= context.Config.World.SeaLevel)
+                    {
+                        chunk.Tiles[x, y] = defaultFluid;
                     }
                     else
                     {

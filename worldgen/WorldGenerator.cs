@@ -2,12 +2,12 @@
 using System.Linq;
 using ProceduralGeneration.chunk;
 
-namespace ProceduralGeneration.generation
+namespace ProceduralGeneration.worldgen
 {
-    public class WorldGenerator(IEnumerable<IWorldGenerator> generators, WorldGeneratorContext context)
+    public class WorldGenerator(IEnumerable<IWorldGenerator> generators, WorldGenContext context)
     {
         private readonly List<IWorldGenerator> _generators = generators.ToList();
-        private readonly WorldGeneratorContext _context = context;
+        private readonly WorldGenContext _context = context;
 
         public void Generate(Chunk chunk)
         {

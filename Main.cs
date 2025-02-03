@@ -1,8 +1,9 @@
 using Godot;
 using ProceduralGeneration;
 using ProceduralGeneration.chunk;
-using ProceduralGeneration.generation;
-using ProceduralGeneration.generation.terrain;
+using ProceduralGeneration.worldgen;
+using ProceduralGeneration.worldgen.terrain;
+using ProceduralGeneration.worldgen.terrain.dirt;
 using ProceduralGeneration.tile;
 
 public partial class Main : Node
@@ -11,17 +12,17 @@ public partial class Main : Node
 	{
         int seed = 12345;
 
-        var worldSettings = WorldSettings.Create(WorldSizeOption.Small);
-        var terrainSettings = TerrainSettings.Load("config/terrainsettings.json");
+        var worldGenConfig = WorldGenConfig.Load("./data/world/small/worldgen/");
 
-        WorldGeneratorContext context = new(seed, worldSettings, terrainSettings);
+        WorldGenContext context = new(seed, worldGenConfig);
 
         WorldGenerator worldGenerator = new(
         [
             new TerrainGenerator(),
+            new DirtGenerator(),
         ], context);
 
-        var chunkController = new ChunkController(worldSettings, worldGenerator);
+        var chunkController = new ChunkController(worldGenConfig.World, worldGenerator);
         var chunkRenderer = new ChunkRenderer(chunkController);
         var tileRenderer = new TileRenderer(chunkController);
 

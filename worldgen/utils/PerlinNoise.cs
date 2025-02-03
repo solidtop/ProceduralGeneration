@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace ProceduralGeneration.generation.utils
+namespace ProceduralGeneration.worldgen.utils
 {
     public class PerlinNoise
     {

@@ -2,11 +2,11 @@
 using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 
-namespace ProceduralGeneration.generation.terrain
+namespace ProceduralGeneration.worldgen.terrain.dirt
 {
-    public class FlatTerrainGenerator : IWorldGenerator
+    public class DirtGenerator : IWorldGenerator
     {
-        public void Generate(Chunk chunk, WorldGeneratorContext context)
+        public void Generate(Chunk chunk, WorldGenContext context)
         {
             var tileWorldPos = new Vector2(
                (chunk.Position.X * Chunk.PixelSize.X) / Tile.Size,
@@ -14,17 +14,20 @@ namespace ProceduralGeneration.generation.terrain
 
             for (int x = 0; x < Chunk.Size.X; x++)
             {
+                var worldX = tileWorldPos.X + x;
+
+                var height = context.HeightMap[x];
+
                 for (int y = 0; y < Chunk.Size.Y; y++)
                 {
                     var worldY = tileWorldPos.Y + y;
 
-                    if (worldY > 100)
+                    var noiseValue = context.Noises.Dirt.Sample2D(worldX, worldY);
+                    var threshold = context.Splines.Dirt.Interpolate(worldY);
+
+                    if (worldY > height && noiseValue > threshold)
                     {
-                        chunk.Tiles[x, y] = TileType.Stone;
-                    }
-                    else
-                    {
-                        chunk.Tiles[x, y] = TileType.Air;
+                        chunk.Tiles[x, y] = TileType.Dirt;
                     }
                 }
             }

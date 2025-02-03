@@ -6,5 +6,6 @@
         Dirt,
         Stone,
         Grass,
+        Water,
     }
 }
