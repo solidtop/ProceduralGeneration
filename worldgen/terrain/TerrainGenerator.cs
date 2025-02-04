@@ -20,8 +20,10 @@ namespace ProceduralGeneration.worldgen.terrain
                 var worldX = tileWorldPos.X + x;
 
                 var noiseValue = context.Noises.Height.Sample1D(worldX);
+
+                var seaLevel = context.Config.World.SeaLevel;
                 var height = (int)context.Splines.Height.Interpolate(noiseValue);
-                
+
                 context.HeightMap[x] = height;
 
                 for (int y = 0; y < Chunk.Size.Y; y++)
@@ -32,7 +34,7 @@ namespace ProceduralGeneration.worldgen.terrain
                     {
                         chunk.Tiles[x, y] = defaultTile;
                     }
-                    else if (worldY >= context.Config.World.SeaLevel)
+                    else if (worldY >= seaLevel)
                     {
                         chunk.Tiles[x, y] = defaultFluid;
                     }

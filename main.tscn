@@ -7,12 +7,17 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxf64"]
 texture = ExtResource("2_d2lmk")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_6kw5p"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mxf64")
 
 [node name="Main" type="Node"]
@@ -21,5 +26,5 @@ script = ExtResource("1_0jm8c")
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_6kw5p")
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_7vcm3")

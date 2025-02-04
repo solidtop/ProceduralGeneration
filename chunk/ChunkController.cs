@@ -13,7 +13,7 @@ namespace ProceduralGeneration.chunk
         private readonly WorldGenerator _worldGenerator = worldGenerator;
         private readonly Dictionary<Vector2I, Chunk> _activeChunks = [];
 
-        private Vector2I _renderDistance = new(4, 3);
+        private Vector2I _renderDistance = new(5, 3);
         private int _loadDistance;
         private int _unloadDistance;
         private const int UnloadBufferDistance = 2;
