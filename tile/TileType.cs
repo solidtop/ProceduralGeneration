@@ -7,5 +7,7 @@
         Stone,
         Grass,
         Water,
+        Sand,
+        Snow,
     }
 }

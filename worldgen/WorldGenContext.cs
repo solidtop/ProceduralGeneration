@@ -1,4 +1,6 @@
 ﻿using ProceduralGeneration.chunk;
+using ProceduralGeneration.worldgen.biome;
+using ProceduralGeneration.worldgen.config;
 using ProceduralGeneration.worldgen.utils;
 
 namespace ProceduralGeneration.worldgen
@@ -11,6 +13,7 @@ namespace ProceduralGeneration.worldgen
         public NoiseGroup Noises { get; } = new(seed, config);
         public SplineGroup Splines { get; } = new(config);
 
+        public BiomeType[] BiomeMap { get; set; } = new BiomeType[Chunk.Size.X];
         public int[] HeightMap { get; set; } = new int[Chunk.Size.X];
     }
 }

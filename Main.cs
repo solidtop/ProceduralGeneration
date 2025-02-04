@@ -1,10 +1,11 @@
 using Godot;
-using ProceduralGeneration;
 using ProceduralGeneration.chunk;
 using ProceduralGeneration.worldgen;
 using ProceduralGeneration.worldgen.terrain;
 using ProceduralGeneration.worldgen.terrain.dirt;
 using ProceduralGeneration.tile;
+using ProceduralGeneration.worldgen.config;
+using ProceduralGeneration.worldgen.biome;
 
 public partial class Main : Node
 {
@@ -18,6 +19,7 @@ public partial class Main : Node
 
         WorldGenerator worldGenerator = new(
         [
+            new BiomeGenerator(),
             new TerrainGenerator(),
             new DirtGenerator(),
         ], context);

@@ -15,7 +15,6 @@ namespace ProceduralGeneration.worldgen.terrain.dirt
             for (int x = 0; x < Chunk.Size.X; x++)
             {
                 var worldX = tileWorldPos.X + x;
-
                 var height = context.HeightMap[x];
 
                 for (int y = 0; y < Chunk.Size.Y; y++)
@@ -25,11 +24,7 @@ namespace ProceduralGeneration.worldgen.terrain.dirt
                     var noiseValue = context.Noises.Dirt.Sample2D(worldX, worldY);
                     var threshold = context.Splines.Dirt.Interpolate(worldY);
 
-                    if (worldY == height + 1)
-                    {
-                        chunk.Tiles[x, y] = TileType.Grass;
-                    }
-                    else if (worldY > height && noiseValue > threshold)
+                    if (worldY > height && noiseValue > threshold)
                     {
                         chunk.Tiles[x, y] = TileType.Dirt;
                     }

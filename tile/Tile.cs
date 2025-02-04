@@ -18,6 +18,8 @@ namespace ProceduralGeneration.tile
             { TileType.Dirt, new TileMetadata(new Vector2I(1, 0)) },
             { TileType.Stone, new TileMetadata(new Vector2I(2, 0)) },
             { TileType.Water, new TileMetadata(new Vector2I(3, 0)) },
+            { TileType.Sand, new TileMetadata(new Vector2I(4, 0)) },
+            { TileType.Snow, new TileMetadata(new Vector2I(5, 0)) },
         };
 
         public static TileMetadata GetMetadata(TileType type)
