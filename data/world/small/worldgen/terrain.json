@@ -5,9 +5,7 @@
     "Noise": {
       "Octaves": 6,
       "Frequency":  0.2,
-      "Amplitude": 1,
-      "Persistence": 0.5,
-      "Lacunarity": 0
+      "Amplitude": 1
     },
     "Spline": {
       "ControlPoints": [
