@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
-		if (!IsOnFloor())
+		if (!IsOnFloor() && !Input.IsActionPressed("free_cam"))
 		{
 			velocity += GetGravity() * (float)delta;
 		}

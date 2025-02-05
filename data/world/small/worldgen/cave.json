@@ -1,0 +1,32 @@
+{
+  "Cheese": {
+    "Noise": {
+      "Octaves": 4,
+      "Frequency": 3,
+      "Amplitude": 1
+    },
+    "Spline": {
+      "ControlPoints": [
+        {
+          "X": 200,
+          "Y": 1
+        },
+        {
+          "X": 400,
+          "Y": 0.4
+        },
+        {
+          "X": 800,
+          "Y": 0.2
+        }
+      ]
+    }
+  },
+  "SpaghettiNoise": {
+    "Octaves": 6,
+    "Frequency": 0.3,
+    "Amplitude": 1,
+    "Threshold": 0.03 
+  }
+}
+

@@ -1,7 +1,5 @@
-﻿using System.IO;
-using Godot;
+﻿using Godot;
 using Godot.Collections;
-using Newtonsoft.Json;
 
 namespace ProceduralGeneration.worldgen.config
 {
@@ -13,18 +11,12 @@ namespace ProceduralGeneration.worldgen.config
         Underworld,
     }
 
-    public class WorldConfig
+    public class WorldConfig : ConfigLoader<WorldConfig>
     {
         public string Name { get; set; }
         public Vector2I Size { get; set; }
         public int SeaLevel { get; set; }
         public Dictionary<WorldLayer, int> Layers { get; set; }
-
-        public static WorldConfig Load(string filePath)
-        {
-            var json = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<WorldConfig>(json);
-        }
     }
 }
 

@@ -2,6 +2,7 @@
 using ProceduralGeneration.worldgen.terrain;
 using ProceduralGeneration.worldgen.terrain.dirt;
 using ProceduralGeneration.worldgen.biome;
+using ProceduralGeneration.worldgen.cave;
 
 namespace ProceduralGeneration.worldgen.config
 {
@@ -11,6 +12,7 @@ namespace ProceduralGeneration.worldgen.config
         public BiomeConfig Biome { get; init; }
         public TerrainConfig Terrain { get; init; }
         public DirtConfig Dirt { get; init; }
+        public CaveConfig Cave { get; init; }
 
         public static WorldGenConfig Load(string path)
         {
@@ -18,6 +20,7 @@ namespace ProceduralGeneration.worldgen.config
             var biomeConfig = BiomeConfig.Load(Path.Combine(path, "biome.json"));
             var terrainConfig = TerrainConfig.Load(Path.Combine(path, "terrain.json"));
             var dirtConfig = DirtConfig.Load(Path.Combine(path, "dirt.json"));
+            var caveConfig = CaveConfig.Load(Path.Combine(path, "cave.json"));
 
             return new WorldGenConfig()
             {
@@ -25,6 +28,7 @@ namespace ProceduralGeneration.worldgen.config
                 Biome = biomeConfig,
                 Terrain = terrainConfig,
                 Dirt = dirtConfig,
+                Cave = caveConfig,
             };
         }
     }

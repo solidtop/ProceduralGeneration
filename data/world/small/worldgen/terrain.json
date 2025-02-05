@@ -4,7 +4,7 @@
   "Height": {
     "Noise": {
       "Octaves": 6,
-      "Frequency":  0.2,
+      "Frequency": 0.2,
       "Amplitude": 1
     },
     "Spline": {
@@ -24,7 +24,7 @@
         {
           "X": 0.6,
           "Y": 70
-        }, 
+        },
         {
           "X": 1,
           "Y": 70

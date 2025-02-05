@@ -6,6 +6,7 @@ using ProceduralGeneration.worldgen.terrain.dirt;
 using ProceduralGeneration.tile;
 using ProceduralGeneration.worldgen.config;
 using ProceduralGeneration.worldgen.biome;
+using ProceduralGeneration.worldgen.cave;
 
 public partial class Main : Node
 {
@@ -22,6 +23,8 @@ public partial class Main : Node
             new BiomeGenerator(),
             new TerrainGenerator(),
             new DirtGenerator(),
+            new SpaghettiCaveGenerator(),
+            new CheeseCaveGenerator(),
         ], context);
 
         var chunkController = new ChunkController(worldGenConfig.World, worldGenerator);
