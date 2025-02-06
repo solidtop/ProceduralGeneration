@@ -10,6 +10,7 @@ namespace ProceduralGeneration.worldgen.utils
         public PerlinNoise Dirt { get; } = CreateNoise(seed, config.Dirt.Noise);
         public PerlinNoise CheeseCave { get; } = CreateNoise(seed, config.Cave.Cheese.Noise);
         public PerlinNoise SpaghettiCave { get; } = CreateNoise(seed, config.Cave.SpaghettiNoise);
+        public PerlinNoise Tree { get; } = CreateNoise(seed, config.Cave.SpaghettiNoise);
 
         private static PerlinNoise CreateNoise(int seed, NoiseConfig config)
         {

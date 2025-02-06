@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Main.cs" id="1_0jm8c"]
 [ext_resource type="Texture2D" uid="uid://cmcs86ym40hie" path="res://assets/terrain_tiles.png" id="2_d2lmk"]
-[ext_resource type="Script" path="res://Camera.cs" id="3_sfms8"]
+[ext_resource type="PackedScene" uid="uid://7cuigfpahuo6" path="res://player/player.tscn" id="3_x6ufq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxf64"]
 texture = ExtResource("2_d2lmk")
@@ -17,6 +17,8 @@ texture = ExtResource("2_d2lmk")
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+7:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6kw5p"]
 physics_layer_0/collision_layer = 1
@@ -28,5 +30,4 @@ script = ExtResource("1_0jm8c")
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_6kw5p")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_sfms8")
+[node name="Player" parent="." instance=ExtResource("3_x6ufq")]

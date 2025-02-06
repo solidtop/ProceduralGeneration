@@ -1,6 +1,4 @@
-﻿using Godot;
-using ProceduralGeneration.chunk;
-using ProceduralGeneration.tile;
+﻿using ProceduralGeneration.chunk;
 
 namespace ProceduralGeneration.worldgen.biome
 {
@@ -8,13 +6,11 @@ namespace ProceduralGeneration.worldgen.biome
     {
         public void Generate(Chunk chunk, WorldGenContext context)
         {
-            var tileWorldPos = new Vector2(
-             (chunk.Position.X * Chunk.PixelSize.X) / Tile.Size,
-             (chunk.Position.Y * Chunk.PixelSize.Y) / Tile.Size);
+            var chunkWorldPos = chunk.Position * Chunk.Size;
 
             for (int x = 0; x < Chunk.Size.X; x++)
             {
-                var worldX = tileWorldPos.X + x;
+                var worldX = chunkWorldPos.X + x;
 
                 var temperature = (context.Noises.Temperature.Sample1D(worldX) + 1) * 0.5f;
                 var humidity = (context.Noises.Humidity.Sample1D(worldX) + 1) * 0.5f;

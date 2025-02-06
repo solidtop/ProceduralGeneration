@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 using ProceduralGeneration.worldgen.utils;
@@ -15,13 +14,11 @@ namespace ProceduralGeneration.worldgen.cave
         {
             _rubbleNoise ??= new(context.Seed, 4, 1);
 
-            var tileWorldPos = new Vector2(
-               (chunk.Position.X * Chunk.PixelSize.X) / Tile.Size,
-               (chunk.Position.Y * Chunk.PixelSize.Y) / Tile.Size);
+            var chunkWorldPos = chunk.Position * Chunk.Size;
 
             for (int x = 0; x < Chunk.Size.X; x++)
             {
-                var worldX = tileWorldPos.X + x;
+                var worldX = chunkWorldPos.X + x;
                 var height = context.HeightMap[x];
 
                 for (int y = 0; y < Chunk.Size.Y; y++)
@@ -31,7 +28,7 @@ namespace ProceduralGeneration.worldgen.cave
                     if (tile == TileType.Air || tile == TileType.Water)
                         continue;
 
-                    var worldY = tileWorldPos.Y + y;
+                    var worldY = chunkWorldPos.Y + y;
 
                     var rubble = Math.Abs(_rubbleNoise.Sample2D(worldX, worldY));
                     var allowRubble = worldY > height + 40;

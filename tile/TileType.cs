@@ -9,5 +9,7 @@
         Water,
         Sand,
         Snow,
+        OakLog,
+        OakLeaves,
     }
 }

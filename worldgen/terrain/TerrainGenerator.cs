@@ -1,5 +1,4 @@
-﻿using Godot;
-using ProceduralGeneration.chunk;
+﻿using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 
 namespace ProceduralGeneration.worldgen.terrain
@@ -8,16 +7,14 @@ namespace ProceduralGeneration.worldgen.terrain
     {
         public void Generate(Chunk chunk, WorldGenContext context)
         {
-            var tileWorldPos = new Vector2(
-               (chunk.Position.X * Chunk.PixelSize.X) / Tile.Size,
-               (chunk.Position.Y * Chunk.PixelSize.Y) / Tile.Size);
+            var chunkWorldPos = chunk.Position * Chunk.Size;
 
             var defaultTile = context.Config.Terrain.DefaultTile;
             var defaultFluid = context.Config.Terrain.DefaultFluid;
 
             for (int x = 0; x < Chunk.Size.X; x++)
             {
-                var worldX = tileWorldPos.X + x;
+                var worldX = chunkWorldPos.X + x;
 
                 var noiseValue = context.Noises.Height.Sample1D(worldX);
 
@@ -28,7 +25,7 @@ namespace ProceduralGeneration.worldgen.terrain
 
                 for (int y = 0; y < Chunk.Size.Y; y++)
                 {
-                    var worldY = tileWorldPos.Y + y;
+                    var worldY = chunkWorldPos.Y + y;
 
                     if (worldY > height)
                     {
