@@ -21,7 +21,13 @@ namespace ProceduralGeneration.tile
             { TileType.Sand, new TileMetadata(new(4, 0)) },
             { TileType.Snow, new TileMetadata(new(5, 0)) },
             { TileType.OakLog, new TileMetadata(new(6, 0)) },
-            { TileType.OakLeaves, new TileMetadata(new(7, 0)) },
+            { TileType.OakLeaves, new TileMetadata(new(7, 0)) },  
+            { TileType.SpruceLog, new TileMetadata(new(3, 2)) },
+            { TileType.SpruceLeaves, new TileMetadata(new(1, 2)) },
+            { TileType.BirchLog, new TileMetadata(new(2, 2)) },
+            { TileType.BirchLeaves, new TileMetadata(new(0, 2)) },
+            { TileType.GrassPlant, new TileMetadata(new(2, 1)) },
+            { TileType.RoseFlower, new TileMetadata(new(5, 1)) },
         };
 
         public static TileMetadata GetMetadata(TileType type)

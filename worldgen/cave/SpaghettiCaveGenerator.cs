@@ -31,7 +31,7 @@ namespace ProceduralGeneration.worldgen.cave
                     var worldY = chunkWorldPos.Y + y;
 
                     var rubble = Math.Abs(_rubbleNoise.Sample2D(worldX, worldY));
-                    var allowRubble = worldY > height + 40;
+                    var allowRubble = worldY >= height + 40;
 
                     if (allowRubble && rubble < RubbleThreshold)
                         continue;
@@ -42,6 +42,11 @@ namespace ProceduralGeneration.worldgen.cave
                     if (noiseValue < thickness)
                     {
                         chunk.Tiles[x, y] = TileType.Air;
+
+                        if (worldY == height)
+                        {
+                            context.SurfaceTileMap[x] = TileType.Air;
+                        }
                     }
                 }
             }

@@ -19,33 +19,20 @@ namespace ProceduralGeneration.worldgen.biome
             }
         }
 
-        private static BiomeType GetBiome(float temperature, float humidity)
+        public static BiomeType GetBiome(float temperature, float humidity)
         {
-            if (temperature < 0.3f) // Cold
+            if (temperature < 0.3f)
             {
-                if (humidity > 0.7f)
-                    return BiomeType.Glacier;
-                if (humidity > 0.4f)
-                    return BiomeType.SnowyTaiga;
-
                 return BiomeType.Tundra;
             }
-            if (temperature < 0.7f) // Temperate
+            else if (temperature < 0.7)
             {
-                if (humidity > 0.7f)
-                    return BiomeType.Swamp;
-                if (humidity > 0.4f)
-                    return BiomeType.Forest;
-
-                return BiomeType.Grassland;
+                return BiomeType.Forest;
             }
-            // Hot
-            if (humidity > 0.7f)
-                return BiomeType.Jungle;
-            if (humidity > 0.4f)
-                return BiomeType.Savanna;
-
-            return BiomeType.Desert;
+            else
+            {
+                return BiomeType.Desert;
+            }
         }
     }
 }

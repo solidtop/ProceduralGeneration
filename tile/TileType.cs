@@ -10,6 +10,12 @@
         Sand,
         Snow,
         OakLog,
-        OakLeaves,
+        OakLeaves, 
+        SpruceLog,
+        SpruceLeaves,
+        BirchLog,
+        BirchLeaves,
+        GrassPlant,
+        RoseFlower,
     }
 }

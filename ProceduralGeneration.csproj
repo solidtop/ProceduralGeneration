@@ -6,10 +6,11 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="data\world\small\worldgen\definitions\biome.json" />
     <Content Include="data\world\small\worldgen\biome.json" />
     <Content Include="data\world\small\worldgen\cave.json" />
     <Content Include="data\world\small\worldgen\dirt.json" />
-    <Content Include="data\world\small\worldgen\world.json" />
+    <Content Include="data\world\small\worldgen\definitions\world.json" />
     <Content Include="data\world\small\worldgen\terrain.json" />
   </ItemGroup>
   <ItemGroup>

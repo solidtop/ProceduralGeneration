@@ -10,7 +10,7 @@ namespace ProceduralGeneration.worldgen.tree
             var chunkWorldPos = chunk.Position * Chunk.Size;
 
             var chunkArea = new Rect2(chunkWorldPos, Chunk.Size);
-            var queryArea = chunkArea.Grow(Chunk.PixelSize.X);
+            var queryArea = chunkArea.Grow(Chunk.PixelSize.X * 2);
 
             var trees = context.Tree.GetTreesInArea(queryArea);
 

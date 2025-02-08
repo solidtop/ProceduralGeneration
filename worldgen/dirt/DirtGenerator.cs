@@ -1,7 +1,7 @@
 ﻿using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 
-namespace ProceduralGeneration.worldgen.terrain.dirt
+namespace ProceduralGeneration.worldgen.dirt
 {
     public class DirtGenerator : IWorldGenerator
     {
@@ -21,9 +21,14 @@ namespace ProceduralGeneration.worldgen.terrain.dirt
                     var noiseValue = context.Noises.Dirt.Sample2D(worldX, worldY);
                     var threshold = context.Splines.Dirt.Interpolate(worldY);
 
-                    if (worldY > height && noiseValue > threshold)
+                    if (worldY >= height && noiseValue > threshold)
                     {
                         chunk.Tiles[x, y] = TileType.Dirt;
+
+                        if (worldY == height)
+                        {
+                            context.SurfaceTileMap[x] = TileType.Dirt;
+                        }
                     }
                 }
             }

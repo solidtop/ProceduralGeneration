@@ -1,4 +1,5 @@
-﻿using ProceduralGeneration.chunk;
+﻿using Godot;
+using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 
 namespace ProceduralGeneration.worldgen.cave
@@ -12,6 +13,7 @@ namespace ProceduralGeneration.worldgen.cave
             for (int x = 0; x < Chunk.Size.X; x++)
             {
                 var worldX = chunkWorldPos.X + x;
+                var height = context.HeightMap[x];
 
                 for (int y = 0; y < Chunk.Size.Y; y++)
                 {
@@ -28,6 +30,11 @@ namespace ProceduralGeneration.worldgen.cave
                     if (noiseValue > hollowness)
                     {
                         chunk.Tiles[x, y] = TileType.Air;
+
+                        if (worldY == height)
+                        {
+                            context.SurfaceTileMap[x] = TileType.Air;
+                        }
                     }
                 }
             }

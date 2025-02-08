@@ -21,9 +21,9 @@ namespace ProceduralGeneration.worldgen
         {
             var heightNoise = _noises.Height.Sample1D(worldX);
             var height = (int)(_splines.Height.Interpolate(heightNoise));
-            var surfaceY = height + 1;
+            var surfaceY = height;
 
-            var isWater = surfaceY > context.Config.World.SeaLevel;
+            var isWater = surfaceY >= context.Definitions.World.SeaLevel;
 
             var dirtNoise = _noises.Dirt.Sample2D(worldX, surfaceY);
             var dirtThreshold = _splines.Dirt.Interpolate(surfaceY);

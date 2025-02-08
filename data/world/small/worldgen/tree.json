@@ -1,0 +1,11 @@
+{
+  "RegionSize": 128,
+  "MinTreeCount":  6,
+  "MaxTreeCount": 10,
+  "DensityNoise": {
+    "Octaves": 4,
+    "Frequency": 1,
+    "Amplitude": 1,
+    "Threshold":  0.1
+  }
+}

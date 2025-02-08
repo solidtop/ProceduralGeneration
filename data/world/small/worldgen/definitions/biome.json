@@ -1,0 +1,36 @@
+{
+  "Forest": {
+    "Color": "#33CC33",
+    "TreeSpawns": [
+      {
+        "TreeType": "OakTree",
+        "Weight": 0.4
+      },
+      {
+        "TreeType": "PineTree",
+        "Weight": 0.3
+      }, 
+      {
+        "TreeType": "BirchTree",
+        "Weight": 0.3
+      }
+    ]
+  },
+  "Desert": {
+    "Color": "#E0C068",
+    "TreeSpawns": []
+  },
+  "Tundra": {
+    "Color": "#99CCFF",
+    "TreeSpawns": [
+      {
+        "TreeType": "PineTree",
+        "Weight": 0.7
+      },
+      {
+        "TreeType": "BirchTree",
+        "Weight": 0.3
+      }
+    ]
+  }
+}

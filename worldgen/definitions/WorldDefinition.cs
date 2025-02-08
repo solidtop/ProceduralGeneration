@@ -1,7 +1,8 @@
-﻿using Godot;
-using Godot.Collections;
+﻿using System.Collections.Generic;
+using Godot;
+using ProceduralGeneration.worldgen.config;
 
-namespace ProceduralGeneration.worldgen.config
+namespace ProceduralGeneration.worldgen.definitions
 {
     public enum WorldLayer
     {
@@ -11,7 +12,7 @@ namespace ProceduralGeneration.worldgen.config
         Underworld,
     }
 
-    public class WorldConfig : ConfigLoader<WorldConfig>
+    public class WorldDefinition : ConfigLoader<WorldDefinition>
     {
         public string Name { get; set; }
         public Vector2I Size { get; set; }
@@ -19,5 +20,3 @@ namespace ProceduralGeneration.worldgen.config
         public Dictionary<WorldLayer, int> Layers { get; set; }
     }
 }
-
-

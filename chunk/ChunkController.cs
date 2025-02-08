@@ -4,12 +4,13 @@ using System.Linq;
 using Godot;
 using ProceduralGeneration.worldgen;
 using ProceduralGeneration.worldgen.config;
+using ProceduralGeneration.worldgen.definitions;
 
 namespace ProceduralGeneration.chunk
 {
-    public partial class ChunkController(WorldConfig world, WorldGenerator worldGenerator) : Node
+    public partial class ChunkController(WorldDefinition world, WorldGenerator worldGenerator) : Node
     {
-        private readonly WorldConfig _world = world;
+        private readonly WorldDefinition _world = world;
         private readonly WorldGenerator _worldGenerator = worldGenerator;
         private readonly Dictionary<Vector2I, Chunk> _activeChunks = [];
 

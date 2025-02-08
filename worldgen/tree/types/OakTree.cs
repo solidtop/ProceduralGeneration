@@ -3,7 +3,7 @@ using Godot;
 using ProceduralGeneration.chunk;
 using ProceduralGeneration.tile;
 
-namespace ProceduralGeneration.worldgen.tree
+namespace ProceduralGeneration.worldgen.tree.types
 {
     public class OakTree(Vector2I position, Random random) : TreeStructure(position)
     {
@@ -13,7 +13,7 @@ namespace ProceduralGeneration.worldgen.tree
 
         public override int TrunkHeight => trunkHeight;
         public override int CanopyRadius => 2;
- 
+
         protected override void GenerateTrunk(Chunk chunk, Vector2I chunkWorldPos)
         {
             int trunkX = Position.X;
@@ -48,7 +48,7 @@ namespace ProceduralGeneration.worldgen.tree
                         {
                             int localX = x - chunkWorldPos.X;
                             int localY = y - chunkWorldPos.Y;
-                         
+
                             if (chunk.Tiles[localX, localY] == TileType.Air)
                             {
                                 chunk.Tiles[localX, localY] = TileType.OakLeaves;
@@ -58,7 +58,5 @@ namespace ProceduralGeneration.worldgen.tree
                 }
             }
         }
-
-      
     }
 }

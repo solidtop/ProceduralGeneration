@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Main.cs" id="1_0jm8c"]
 [ext_resource type="Texture2D" uid="uid://cmcs86ym40hie" path="res://assets/terrain_tiles.png" id="2_d2lmk"]
-[ext_resource type="PackedScene" uid="uid://7cuigfpahuo6" path="res://player/player.tscn" id="3_x6ufq"]
+[ext_resource type="Script" path="res://Camera.cs" id="3_8byge"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxf64"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0t2cg"]
 texture = ExtResource("2_d2lmk")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -19,15 +19,32 @@ texture = ExtResource("2_d2lmk")
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
 7:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_6kw5p"]
+[sub_resource type="TileSet" id="TileSet_las4p"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_mxf64")
+sources/0 = SubResource("TileSetAtlasSource_0t2cg")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0jm8c")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_6kw5p")
+tile_set = SubResource("TileSet_las4p")
 
-[node name="Player" parent="." instance=ExtResource("3_x6ufq")]
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_8byge")
