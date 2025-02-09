@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7kikvrq0vejp"]
 
-[ext_resource type="Script" path="res://Main.cs" id="1_0jm8c"]
-[ext_resource type="Texture2D" uid="uid://cmcs86ym40hie" path="res://assets/terrain_tiles.png" id="2_d2lmk"]
-[ext_resource type="Script" path="res://Camera.cs" id="3_8byge"]
+[ext_resource type="Script" path="res://Main.cs" id="1_mnxoi"]
+[ext_resource type="Texture2D" uid="uid://cmcs86ym40hie" path="res://Assets/TileSets/terrain.png" id="2_rkcyt"]
+[ext_resource type="Script" path="res://Common/Camera.cs" id="3_a2vdd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0t2cg"]
-texture = ExtResource("2_d2lmk")
+texture = ExtResource("2_rkcyt")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -41,10 +41,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0t2cg")
 
 [node name="Main" type="Node"]
-script = ExtResource("1_0jm8c")
+script = ExtResource("1_mnxoi")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_las4p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_8byge")
+script = ExtResource("3_a2vdd")

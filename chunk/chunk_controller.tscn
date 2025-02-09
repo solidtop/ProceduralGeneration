@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://biu8liy2thyyo"]
-
-[ext_resource type="Script" path="res://chunk/ChunkController.cs" id="1_6ejtm"]
-
-[node name="ChunkController" type="Node"]
-script = ExtResource("1_6ejtm")

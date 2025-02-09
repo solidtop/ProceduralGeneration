@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvrmb8lk6b5pn"]
-
-[ext_resource type="Script" path="res://tile/TileRenderer.cs" id="1_smwnr"]
-
-[node name="TileRenderer" type="Node"]
-script = ExtResource("1_smwnr")
